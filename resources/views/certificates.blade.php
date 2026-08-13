@@ -14,16 +14,16 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse($certificates as $cert)
-            <div class="glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between hover:border-indigo-500/40 transition-all">
+            <div class="flat-card p-6 rounded-xl flex flex-col justify-between">
                 <div>
                     @if($cert->image)
-                        <div class="h-44 rounded-xl overflow-hidden mb-4 bg-slate-900 border border-slate-800">
+                        <div class="h-44 rounded-lg overflow-hidden mb-4 bg-slate-900 border border-slate-800">
                             <img src="{{ asset('storage/' . $cert->image) }}" alt="{{ $cert->title }}" class="w-full h-full object-cover">
                         </div>
                     @endif
 
                     <div class="flex items-start justify-between gap-3 mb-3">
-                        <span class="text-[11px] font-mono text-slate-400 px-2.5 py-1 bg-slate-800 rounded-full">
+                        <span class="text-[11px] font-mono text-slate-400 px-2.5 py-0.5 bg-slate-900 rounded border border-slate-800">
                             {{ $cert->category }}
                         </span>
                         <span class="text-slate-500 text-[11px]">
@@ -57,3 +57,4 @@
     </div>
 </div>
 @endsection
+

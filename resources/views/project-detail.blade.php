@@ -9,7 +9,7 @@
     </a>
 
     <div class="space-y-6">
-        <div class="inline-block px-3 py-1 bg-indigo-500/10 border border-indigo-500/30 rounded-full text-xs font-semibold text-indigo-300">
+        <div class="inline-block px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-semibold text-indigo-400">
             {{ $project->category }}
         </div>
 
@@ -19,9 +19,9 @@
 
         <!-- Tech Stack Badges -->
         @if(!empty($project->tech_stack))
-            <div class="flex flex-wrap gap-2 pt-2">
+            <div class="flex flex-wrap gap-2 pt-1">
                 @foreach($project->tech_stack as $tech)
-                    <span class="px-3 py-1 text-xs font-mono text-slate-200 bg-slate-800 rounded-lg border border-slate-700">
+                    <span class="px-3 py-1 text-xs font-mono text-slate-200 bg-slate-900 rounded-lg border border-slate-800">
                         {{ $tech }}
                     </span>
                 @endforeach
@@ -29,35 +29,35 @@
         @endif
 
         <!-- Action Links -->
-        <div class="flex flex-wrap gap-4 pt-2 pb-6 border-b border-slate-800">
+        <div class="flex flex-wrap gap-3 pt-2 pb-6 border-b border-slate-800">
             @if($project->demo_url)
-                <a href="{{ $project->demo_url }}" target="_blank" class="px-5 py-2.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-1.5">
+                <a href="{{ $project->demo_url }}" target="_blank" class="px-5 py-2.5 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors flex items-center gap-1.5">
                     <i class="ri-external-link-line"></i> Live Demo / Uji Coba
                 </a>
             @endif
             @if($project->github_url)
-                <a href="{{ $project->github_url }}" target="_blank" class="px-5 py-2.5 text-xs font-bold text-slate-200 glass-card hover:bg-slate-800 rounded-xl border border-slate-700 transition-all flex items-center gap-1.5">
-                    <i class="ri-github-line text-lg"></i> Kode Sumber (GitHub)
+                <a href="{{ $project->github_url }}" target="_blank" class="px-5 py-2.5 text-xs font-bold text-slate-200 bg-slate-900 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors flex items-center gap-1.5">
+                    <i class="ri-github-line text-base"></i> Kode Sumber (GitHub)
                 </a>
             @endif
         </div>
 
         <!-- Thumbnail Image -->
         @if($project->thumbnail)
-            <div class="rounded-2xl overflow-hidden glass-panel border border-slate-800">
+            <div class="rounded-xl overflow-hidden bg-slate-900 border border-slate-800">
                 <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}" class="w-full h-auto max-h-[500px] object-cover">
             </div>
         @endif
 
         <!-- Project Description Content -->
-        <div class="glass-card p-8 rounded-2xl border border-slate-800 space-y-4 text-slate-300 leading-relaxed text-sm">
-            <h2 class="text-lg font-bold text-white mb-2">Ringkasan Proyek</h2>
-            <p class="text-base text-slate-200 leading-relaxed">{{ $project->summary }}</p>
+        <div class="flat-card p-6 sm:p-8 rounded-xl border border-slate-800 space-y-4 text-slate-300 leading-relaxed text-sm">
+            <h2 class="text-base sm:text-lg font-bold text-white mb-2">Ringkasan Proyek</h2>
+            <p class="text-sm text-slate-200 leading-relaxed">{{ $project->summary }}</p>
 
             @if($project->description)
                 <hr class="border-slate-800 my-6">
-                <h2 class="text-lg font-bold text-white mb-2">Penjelasan Detail & Fitur Utama</h2>
-                <div class="whitespace-pre-line text-slate-300">
+                <h2 class="text-base sm:text-lg font-bold text-white mb-2">Penjelasan Detail & Fitur Utama</h2>
+                <div class="whitespace-pre-line text-slate-300 text-xs sm:text-sm">
                     {{ $project->description }}
                 </div>
             @endif
@@ -65,3 +65,4 @@
     </div>
 </div>
 @endsection
+
