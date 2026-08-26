@@ -74,7 +74,7 @@
                                 <i class="ri-user-3-line text-4xl"></i>
                             </div>
                             <span class="font-bold text-white text-base">{{ $profile->full_name }}</span>
-                            <span class="text-xs text-indigo-400 mt-1 font-medium">Fullstack Web Developer</span>
+                            <span class="text-xs text-indigo-400 mt-1 font-medium text-center px-4 line-clamp-2">{{ $profile->title }}</span>
                         </div>
                     @endif
                 </div>
@@ -89,7 +89,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-12">
             <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-2">Tentang Saya</h2>
-            <p class="text-2xl sm:text-3xl font-extrabold text-white">Lulusan Baru Informatika dengan Passion di Web Development</p>
+            <p class="text-2xl sm:text-3xl font-extrabold text-white">Lulusan Baru Informatika dengan Passion di IT Networking</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -99,7 +99,7 @@
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">Pendidikan Akademik</h3>
                 <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                    Lulusan Sarjana Komputer (S.Kom) S1 Teknik Informatika. Memiliki pemahaman kuat mengenai Pemrograman Berorientasi Objek (OOP), Struktur Data, Basis Data Relasional, dan Rekayasa Perangkat Lunak.
+                    Lulusan Sarjana Komputer (S.Kom) S1 Informatika. Memiliki keahlian utama dan passion di bidang IT Networking, mencakup perancangan topologi, instalasi, serta konfigurasi perangkat jaringan. Turut dilengkapi dengan kemampuan dasar pengembangan sistem menggunakan konsep OOP pada PHP dan framework Laravel.
                 </p>
             </div>
 
@@ -107,9 +107,9 @@
                 <div class="w-11 h-11 rounded-lg bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl mb-4">
                     <i class="ri-code-s-slash-line"></i>
                 </div>
-                <h3 class="text-base font-bold text-white mb-2">Pengembangan Laravel & PHP</h3>
+                <h3 class="text-base font-bold text-white mb-2">Pengembangan Laravel & PHP | Styling Modern Tailwind CSS</h3>
                 <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                    Berfokus pada pengembangan backend dan CMS menggunakan framework PHP Laravel, pengelolaan database MySQL/SQLite, pembuatan REST API, dan sistem otentikasi.
+                    Berfokus pada pengembangan backend dan CMS menggunakan framework PHP Laravel, pengelolaan database MySQL/SQLite, pembuatan REST API, dan sistem otentikas, Serta mendesain antarmuka pengguna (UI/UX) yang bersih, fleksibel, responsif di HP/Laptop, serta mengimplementasikan layout elegan dengan Tailwind CSS.
                 </p>
             </div>
 
@@ -117,9 +117,9 @@
                 <div class="w-11 h-11 rounded-lg bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-xl mb-4">
                     <i class="ri-palette-line"></i>
                 </div>
-                <h3 class="text-base font-bold text-white mb-2">Styling Modern Tailwind CSS</h3>
+                <h3 class="text-base font-bold text-white mb-2">Network Administration & Monitoring</h3>
                 <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                    Mampu mendesain antarmuka pengguna (UI/UX) yang bersih, fleksibel, responsif di HP/Laptop, serta mengimplementasikan layout elegan dengan Tailwind CSS.
+                    Memiliki latar belakang NOC dan penyelesaian masalah (troubleshooting) jaringan. Mampu menangani infrastruktur fisik secara langsung dan memanfaatkan tools monitoring standar industri (PRTG, Zabbix) untuk memastikan operasional jaringan berjalan optimal dan stabil setiap saat.
                 </p>
             </div>
         </div>
@@ -143,7 +143,7 @@
                     <div class="flex flex-wrap gap-2">
                         @foreach($items as $item)
                             <span class="px-3 py-1 text-xs font-medium text-slate-200 bg-slate-900 border border-slate-800 rounded-md">
-                                {{ $item }}
+                                {{ $item->name }}
                             </span>
                         @endforeach
                     </div>

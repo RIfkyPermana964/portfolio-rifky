@@ -42,6 +42,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // CRUD Certificates
         Route::resource('certificates', CertificateController::class)->except(['show']);
 
+        // CRUD Skills
+        Route::resource('skills', App\Http\Controllers\Admin\SkillController::class)->except(['show']);
+
         // Profile & Resume Management
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');

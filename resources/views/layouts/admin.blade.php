@@ -75,6 +75,11 @@
                     <i class="ri-award-line text-lg"></i> Kelola Sertifikasi
                 </a>
 
+                <a href="{{ route('admin.skills.index') }}" 
+                   class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all {{ request()->routeIs('admin.skills.*') ? 'bg-indigo-600 text-white font-semibold shadow-lg shadow-indigo-600/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60' }}">
+                    <i class="ri-code-s-slash-line text-lg"></i> Kelola Keahlian
+                </a>
+
                 <a href="{{ route('admin.profile.edit') }}" 
                    class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all {{ request()->routeIs('admin.profile.*') ? 'bg-indigo-600 text-white font-semibold shadow-lg shadow-indigo-600/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60' }}">
                     <i class="ri-user-settings-line text-lg"></i> Pengaturan Profil

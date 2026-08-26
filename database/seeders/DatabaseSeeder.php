@@ -32,8 +32,9 @@ class DatabaseSeeder extends Seeder
             ['id' => 1],
             [
                 'full_name' => 'Rifky Permana, S.Kom.',
-                'title' => 'Fresh Graduate S1 Informatika | Fullstack Web Developer',
-                'bio' => 'Halo! Saya Rifky Permana, seorang Lulusan Baru S1 Teknik Informatika berusia 22 tahun dengan antusiasme tinggi pada pengembangan sistem berbasis web modern. Berpengalaman menggunakan PHP Laravel, Tailwind CSS, REST API, dan MySQL untuk membangun aplikasi yang scalable, cepat, dan intuitif.',
+                'title' => 'Fresh Graduate S1 Informatika | IT Networking | Network Operation Center',
+                'bio' => 'Halo! Saya Rifky Permana, Seorang profesional di bidang IT Networking, Pernah bekerja sebagai Network Operation Center (NOC) Engineer selama 4 Tahun. Memiliki pengalaman dalam mengelola dan mengkonfigurasi perangkat jaringan seperti MikroTik, Cisco, huawei, serta menguasai tools monitoring jaringan seperti PRTG dan Zabbix (basic), The Dude server, dan topologi FTTH untuk memastikan konektivitas yang stabil dan optimal.
+Telah mengikuti pelatihan Digitalent Networking Basic dari Cisco Academy serta Ujian ACA Alibaba Cloud, yang memperkuat pemahaman saya dalam infrastruktur jaringan dan komputasi cloud.',
                 'email' => 'rifkypermana.dev@gmail.com',
                 'whatsapp' => '6281234567890',
                 'github_url' => 'https://github.com/rifkypermana',

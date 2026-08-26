@@ -29,6 +29,8 @@
                         <option value="Web Development" {{ $project->category == 'Web Development' ? 'selected' : '' }}>Web Development</option>
                         <option value="Mobile App" {{ $project->category == 'Mobile App' ? 'selected' : '' }}>Mobile App</option>
                         <option value="System & Database" {{ $project->category == 'System & Database' ? 'selected' : '' }}>System & Database</option>
+                        <option value="Networking" {{ $project->category == 'Networking' ? 'selected' : '' }}>Networking</option>
+                        <option value="Desain Grafis" {{ $project->category == 'Desain Grafis' ? 'selected' : '' }}>Desain Grafis</option>
                         <option value="AI & Machine Learning" {{ $project->category == 'AI & Machine Learning' ? 'selected' : '' }}>AI & Machine Learning</option>
                     </select>
                 </div>

@@ -16,11 +16,7 @@ class HomeController extends Controller
         $projects = Project::orderBy('created_at', 'desc')->get();
         $certificates = Certificate::orderBy('issue_date', 'desc')->get();
 
-        $skills = [
-            'Backend & Core' => ['PHP', 'Laravel 11', 'MySQL', 'SQLite', 'RESTful API', 'OOP Architecture'],
-            'Frontend & Styling' => ['Tailwind CSS', 'HTML5 & CSS3', 'JavaScript (ES6+)', 'Alpine.js', 'Blade Templates'],
-            'Tools & Workflow' => ['Git & GitHub', 'Laragon', 'VS Code', 'Postman', 'Vite', 'npm'],
-        ];
+        $skills = \App\Models\Skill::orderBy('category')->orderBy('name')->get()->groupBy('category');
 
         return view('home', compact('profile', 'projects', 'certificates', 'skills'));
     }

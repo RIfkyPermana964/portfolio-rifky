@@ -28,6 +28,8 @@
                         <option value="Web Development">Web Development</option>
                         <option value="Mobile App">Mobile App</option>
                         <option value="System & Database">System & Database</option>
+                        <option value="Networking">Networking</option>
+                        <option value="Desain Grafis">Desain Grafis</option>
                         <option value="AI & Machine Learning">AI & Machine Learning</option>
                     </select>
                 </div>
