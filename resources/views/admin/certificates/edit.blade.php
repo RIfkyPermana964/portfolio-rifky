@@ -49,7 +49,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-2">Link Verifikasi Credential (Opsional)</label>
-                    <input type="url" name="credential_url" value="{{ old('credential_url', $certificate->credential_url) }}"
+                    <input type="text" name="credential_url" value="{{ old('credential_url', $certificate->credential_url) }}"
                            class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
                 </div>
             </div>

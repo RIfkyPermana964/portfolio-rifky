@@ -51,19 +51,19 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-2">URL GitHub</label>
-                    <input type="url" name="github_url" value="{{ old('github_url', $profile->github_url) }}"
+                    <input type="text" name="github_url" value="{{ old('github_url', $profile->github_url) }}"
                            class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-2">URL LinkedIn</label>
-                    <input type="url" name="linkedin_url" value="{{ old('linkedin_url', $profile->linkedin_url) }}"
+                    <input type="text" name="linkedin_url" value="{{ old('linkedin_url', $profile->linkedin_url) }}"
                            class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-2">URL Instagram</label>
-                    <input type="url" name="instagram_url" value="{{ old('instagram_url', $profile->instagram_url) }}"
+                    <input type="text" name="instagram_url" value="{{ old('instagram_url', $profile->instagram_url) }}"
                            class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
                 </div>
             </div>

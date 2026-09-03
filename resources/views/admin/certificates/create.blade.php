@@ -48,7 +48,7 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-2">Link Verifikasi Credential (Opsional)</label>
-                    <input type="url" name="credential_url" value="{{ old('credential_url') }}" placeholder="https://dicoding.com/certificates/XYZ"
+                    <input type="text" name="credential_url" value="{{ old('credential_url') }}" placeholder="https://dicoding.com/certificates/XYZ"
                            class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
                 </div>
             </div>
