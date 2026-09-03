@@ -57,13 +57,13 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-2">Link Live Demo (Opsional)</label>
-                    <input type="url" name="demo_url" value="{{ old('demo_url', $project->demo_url) }}"
+                    <input type="text" name="demo_url" value="{{ old('demo_url', $project->demo_url) }}"
                            class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-2">Link Repository GitHub (Opsional)</label>
-                    <input type="url" name="github_url" value="{{ old('github_url', $project->github_url) }}"
+                    <input type="text" name="github_url" value="{{ old('github_url', $project->github_url) }}"
                            class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
                 </div>
             </div>
