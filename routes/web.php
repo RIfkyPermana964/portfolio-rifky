@@ -27,7 +27,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Guest Admin Routes
     Route::middleware('guest')->group(function () {
         Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-        Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+        Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('login.submit');
     });
 
     // Authenticated Admin Routes
@@ -48,5 +48,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Profile & Resume Management
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::put('/profile/account', [ProfileController::class, 'updateAccount'])->name('profile.account');
+        Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
     });
 });

@@ -70,9 +70,11 @@
                 </div>
 
                 <div class="hidden md:flex items-center gap-3">
-                    <a href="{{ route('admin.login') }}" class="px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg transition-colors flex items-center gap-1.5">
-                        <i class="ri-lock-line text-indigo-400"></i> Admin Login
-                    </a>
+                    @auth
+                        <a href="{{ route('admin.dashboard') }}" class="px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg transition-colors flex items-center gap-1.5">
+                            <i class="ri-dashboard-line text-indigo-400"></i> Dashboard
+                        </a>
+                    @endauth
                     <a href="{{ route('home') }}#contact" class="px-5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors">
                         <i class="ri-mail-send-line mr-1"></i> Hubungi Saya
                     </a>
@@ -92,9 +94,11 @@
                 <a @click="open = false" href="{{ route('home') }}#projects" class="block text-slate-300 hover:text-white font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Proyek</a>
                 <a @click="open = false" href="{{ route('home') }}#certificates" class="block text-slate-300 hover:text-white font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Sertifikasi</a>
                 <a @click="open = false" href="{{ route('home') }}#contact" class="block text-slate-300 hover:text-white font-medium py-2 px-3 rounded-lg hover:bg-slate-800">Kontak</a>
-                <div class="pt-2 border-t border-slate-800 flex flex-col gap-2">
-                    <a href="{{ route('admin.login') }}" class="text-center py-2 text-xs font-semibold text-slate-300 bg-slate-800 rounded-lg">Admin Login</a>
-                </div>
+                @auth
+                    <div class="pt-2 border-t border-slate-800 flex flex-col gap-2">
+                        <a href="{{ route('admin.dashboard') }}" class="text-center py-2 text-xs font-semibold text-slate-300 bg-slate-800 rounded-lg">Dashboard</a>
+                    </div>
+                @endauth
             </div>
         </div>
     </nav>

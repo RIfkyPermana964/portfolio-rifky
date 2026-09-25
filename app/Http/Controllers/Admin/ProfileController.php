@@ -6,13 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function edit()
     {
         $profile = Profile::first() ?? new Profile();
-        return view('admin.profile', compact('profile'));
+        $user = auth()->user();
+        return view('admin.profile', compact('profile', 'user'));
     }
 
     public function update(Request $request)
@@ -51,5 +53,38 @@ class ProfileController extends Controller
         $profile->fill($validated)->save();
 
         return redirect()->route('admin.profile.edit')->with('success', 'Profil dan informasi CV berhasil diperbarui!');
+    }
+
+    public function updateAccount(Request $request)
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+        ]);
+
+        $user->update($validated);
+
+        return redirect()->route('admin.profile.edit')->with('success', 'Informasi akun login admin berhasil diperbarui!');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required|current_password',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'current_password.current_password' => 'Password lama tidak sesuai.',
+            'password.min' => 'Password baru minimal harus 8 karakter.',
+            'password.confirmed' => 'Konfirmasi password baru tidak cocok.',
+        ]);
+
+        $user = $request->user();
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('admin.profile.edit')->with('success', 'Password admin berhasil diganti!');
     }
 }

@@ -17,15 +17,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Admin User
-        User::updateOrCreate(
-            ['email' => 'admin@rifkypermana.com'],
-            [
+        // 1. Admin User (Hanya dibuat jika belum ada agar password tidak ter-reset)
+        $adminEmail = env('ADMIN_EMAIL', 'admin@rifkypermana.com');
+        $adminPassword = env('ADMIN_PASSWORD', \Illuminate\Support\Str::random(16));
+        if (!User::where('email', $adminEmail)->exists()) {
+            User::create([
                 'name' => 'Rifky Permana',
-                'email' => 'admin@rifkypermana.com',
-                'password' => Hash::make('password'),
-            ]
-        );
+                'email' => $adminEmail,
+                'password' => Hash::make($adminPassword),
+            ]);
+        }
 
         // 2. Profile
         Profile::updateOrCreate(

@@ -58,7 +58,7 @@
                         <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
                             <i class="ri-mail-line"></i>
                         </span>
-                        <input type="email" name="email" value="{{ old('email', 'admin@rifkypermana.com') }}" required
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email admin" required autocomplete="email"
                                class="w-full pl-10 pr-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors">
                     </div>
                 </div>
@@ -69,10 +69,9 @@
                         <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500">
                             <i class="ri-lock-line"></i>
                         </span>
-                        <input type="password" name="password" value="password" required
+                        <input type="password" name="password" placeholder="Masukkan password" required autocomplete="current-password"
                                class="w-full pl-10 pr-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500 transition-colors">
                     </div>
-                    <p class="text-[11px] text-indigo-400/80 mt-1">Default password seeder: <code class="font-mono text-indigo-300">password</code></p>
                 </div>
 
                 <div class="flex items-center justify-between text-xs text-slate-400">
