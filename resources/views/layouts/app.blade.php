@@ -6,6 +6,12 @@
     <meta name="description" content="Portofolio Resmi Rifky Permana, S.Kom. - Lulusan S1 Informatika & Web Developer. Menampilkan proyek web, sertifikasi, dan keahlian.">
     <title>@yield('title', 'Rifky Permana | Web Developer & Informatika Fresh Graduate')</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,11 +57,11 @@
             <div class="flex items-center justify-between">
                 <!-- Brand / Logo -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-extrabold text-lg transition-colors group-hover:bg-indigo-500">
-                        RP
+                    <div class="w-10 h-10 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center p-1.5 transition-all group-hover:border-red-500/40 group-hover:shadow-[0_0_15px_rgba(239,68,68,0.25)]">
+                        <img src="{{ asset('images/logo.png') }}" alt="Rifky Permana Logo" class="w-full h-full object-contain">
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-bold text-white text-base group-hover:text-indigo-400 transition-colors">Rifky Permana</span>
+                        <span class="font-bold text-white text-base group-hover:text-red-400 transition-colors">Rifky Permana</span>
                         <span class="text-xs text-slate-400 font-medium">S.Kom.</span>
                     </div>
                 </a>
@@ -113,8 +119,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-base">
-                        RP
+                    <div class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1 shadow-sm">
+                        <img src="{{ asset('images/logo.png') }}" alt="Rifky Permana Logo" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <p class="font-bold text-slate-200 text-sm">Rifky Permana, S.Kom.</p>
