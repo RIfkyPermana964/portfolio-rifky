@@ -7,10 +7,10 @@
     <title>@yield('title', 'Rifky Permana | Web Developer & Informatika Fresh Graduate')</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=rp1">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}?v=rp1">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}?v=rp1">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}?v=rp1">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +58,7 @@
                 <!-- Brand / Logo -->
                 <a href="{{ route('home') }}" class="flex items-center gap-3 group">
                     <div class="w-10 h-10 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-center p-1.5 transition-all group-hover:border-red-500/40 group-hover:shadow-[0_0_15px_rgba(239,68,68,0.25)]">
-                        <img src="{{ asset('images/logo.png') }}" alt="Rifky Permana Logo" class="w-full h-full object-contain">
+                        <img src="{{ asset('images/logo.png') }}?v=rp1" alt="Rifky Permana Logo" class="w-full h-full object-contain">
                     </div>
                     <div class="flex flex-col">
                         <span class="font-bold text-white text-base group-hover:text-red-400 transition-colors">Rifky Permana</span>
@@ -120,7 +120,7 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1 shadow-sm">
-                        <img src="{{ asset('images/logo.png') }}" alt="Rifky Permana Logo" class="w-full h-full object-contain">
+                        <img src="{{ asset('images/logo.png') }}?v=rp1" alt="Rifky Permana Logo" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <p class="font-bold text-slate-200 text-sm">Rifky Permana, S.Kom.</p>
