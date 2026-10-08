@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProfileController;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/login', fn () => redirect()->route('admin.login'))->name('login');
 Route::get('/projects/{slug}', [HomeController::class, 'projectDetail'])->name('projects.detail');
 Route::get('/certificates', [HomeController::class, 'certificates'])->name('certificates.index');
 Route::post('/contact', [HomeController::class, 'sendContact'])->name('contact.send');
