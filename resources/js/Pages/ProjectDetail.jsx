@@ -19,7 +19,7 @@ export default function ProjectDetail({ project, profile }) {
                 <div className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-violet-600/10 blur-[140px]"></div>
             </div>
 
-            <Navbar auth={null} />
+            <Navbar auth={null} profile={profile} />
 
             <main className="flex-grow pt-28 pb-16 relative z-10">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

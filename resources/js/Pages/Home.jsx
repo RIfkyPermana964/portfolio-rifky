@@ -77,7 +77,7 @@ export default function Home({ profile, projects = [], certificates = [], skills
             </div>
 
             {/* Navbar */}
-            <Navbar auth={auth} />
+            <Navbar auth={auth} profile={profile} />
 
             {/* Main Content */}
             <main className="flex-grow pt-28 relative z-10">

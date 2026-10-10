@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Navbar({ auth }) {
+export default function Navbar({ auth, profile }) {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -32,6 +32,10 @@ export default function Navbar({ auth }) {
         { label: 'Sertifikasi', href: '#certificates', icon: Award },
         { label: 'Kontak', href: '#contact', icon: Send },
     ];
+
+    // Format display name: if full_name has degree suffix like "Rifky Permana, S.Kom.", get just the name for logo
+    const displayName = profile?.full_name ? profile.full_name.split(',')[0].trim() : 'Rifky Permana';
+    const displayTagline = profile?.sub_title || 'S.Kom. • Web Dev';
 
     return (
         <header 
@@ -58,10 +62,10 @@ export default function Navbar({ auth }) {
                         </div>
                         <div className="flex flex-col">
                             <span className="font-bold text-white text-base tracking-tight group-hover:text-indigo-300 transition-colors">
-                                Rifky Permana
+                                {displayName}
                             </span>
                             <span className="text-[11px] text-indigo-400/90 font-mono tracking-wider font-medium">
-                                S.Kom. &bull; Web Dev
+                                {displayTagline}
                             </span>
                         </div>
                     </a>

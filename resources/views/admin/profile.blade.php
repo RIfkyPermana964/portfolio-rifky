@@ -100,7 +100,7 @@
             @csrf
             @method('PUT')
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-2">Nama Lengkap & Gelar *</label>
                     <input type="text" name="full_name" value="{{ old('full_name', $profile->full_name) }}" required
@@ -108,7 +108,13 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-2">Headline / Judul Profesionial *</label>
+                    <label class="block text-xs font-semibold text-slate-300 mb-2">Tagline Navbar (di bawah Logo)</label>
+                    <input type="text" name="sub_title" value="{{ old('sub_title', $profile->sub_title ?? 'S.Kom. • Web Dev') }}" placeholder="Contoh: S.Kom. • Web Dev"
+                           class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-2">Headline / Judul Profesional *</label>
                     <input type="text" name="title" value="{{ old('title', $profile->title) }}" required
                            class="w-full px-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500">
                 </div>

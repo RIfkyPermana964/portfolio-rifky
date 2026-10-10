@@ -12,6 +12,7 @@ class Profile extends Model
     protected $fillable = [
         'full_name',
         'title',
+        'sub_title',
         'bio',
         'avatar',
         'resume_path',
