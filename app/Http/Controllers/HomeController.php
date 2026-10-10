@@ -7,6 +7,7 @@ use App\Models\Certificate;
 use App\Models\Profile;
 use App\Models\ContactMessage;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class HomeController extends Controller
 {
@@ -18,21 +19,32 @@ class HomeController extends Controller
 
         $skills = \App\Models\Skill::orderBy('category')->orderBy('name')->get()->groupBy('category');
 
-        return view('home', compact('profile', 'projects', 'certificates', 'skills'));
+        return Inertia::render('Home', [
+            'profile' => $profile,
+            'projects' => $projects,
+            'certificates' => $certificates,
+            'skills' => $skills,
+        ]);
     }
 
     public function projectDetail($slug)
     {
         $project = Project::where('slug', $slug)->firstOrFail();
         $profile = Profile::first();
-        return view('project-detail', compact('project', 'profile'));
+        return Inertia::render('ProjectDetail', [
+            'project' => $project,
+            'profile' => $profile,
+        ]);
     }
 
     public function certificates()
     {
         $profile = Profile::first();
         $certificates = Certificate::orderBy('issue_date', 'desc')->get();
-        return view('certificates', compact('certificates', 'profile'));
+        return Inertia::render('Certificates', [
+            'certificates' => $certificates,
+            'profile' => $profile,
+        ]);
     }
 
     public function sendContact(Request $request)
