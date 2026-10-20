@@ -91,7 +91,7 @@ export default function ProjectsIndex({ projects, filters }) {
                                                     <div className="min-w-0">
                                                         <Link
                                                             href={`/admin/projects/${project.id}/edit`}
-                                                            className="font-semibold text-white hover:text-indigo-300 flex items-center gap-1.5"
+                                                            className="font-semibold text-white hover:text-emerald-300 flex items-center gap-1.5"
                                                         >
                                                             {project.title}
                                                             {project.is_featured && (
@@ -129,7 +129,7 @@ export default function ProjectsIndex({ projects, filters }) {
                                                     </a>
                                                     <Link
                                                         href={`/admin/projects/${project.id}/edit`}
-                                                        className="p-2 rounded-lg text-slate-400 hover:text-indigo-300 hover:bg-indigo-500/10 transition-colors"
+                                                        className="p-2 rounded-lg text-slate-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition-colors"
                                                         title="Edit"
                                                     >
                                                         <Pencil className="w-4 h-4" />

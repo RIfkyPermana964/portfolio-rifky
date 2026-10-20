@@ -54,11 +54,11 @@ function SidebarContent({ currentUrl, unreadMessages, onNavigate }) {
                             className={cn(
                                 'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors',
                                 active
-                                    ? 'bg-indigo-600/15 text-white border border-indigo-500/30'
+                                    ? 'bg-emerald-600/15 text-white border border-emerald-500/30'
                                     : 'text-slate-400 hover:text-white hover:bg-slate-800/60 border border-transparent',
                             )}
                         >
-                            <Icon className={cn('w-[18px] h-[18px]', active ? 'text-indigo-400' : '')} />
+                            <Icon className={cn('w-[18px] h-[18px]', active ? 'text-emerald-400' : '')} />
                             <span className="flex-1">{item.label}</span>
                             {count > 0 && (
                                 <span className="min-w-5 h-5 px-1.5 rounded-full bg-rose-500 text-white text-[11px] font-bold flex items-center justify-center">
@@ -121,9 +121,9 @@ export default function AdminLayout({ title, description, actions, backHref, chi
         <MotionConfig reducedMotion="user">
             <Head title={`${title} · Admin`} />
 
-            <div className="min-h-screen bg-[#090d16] text-slate-100">
+            <div className="min-h-screen bg-[#070d0d] text-slate-100">
                 {/* Desktop sidebar */}
-                <aside className="hidden lg:block fixed inset-y-0 left-0 w-64 bg-[#0b111d] border-r border-slate-800/80 z-30">
+                <aside className="hidden lg:block fixed inset-y-0 left-0 w-64 bg-[#091211] border-r border-slate-800/80 z-30">
                     <SidebarContent currentUrl={url} unreadMessages={unreadMessages} />
                 </aside>
 
@@ -139,7 +139,7 @@ export default function AdminLayout({ title, description, actions, backHref, chi
                                 onClick={() => setMobileOpen(false)}
                             />
                             <motion.aside
-                                className="lg:hidden fixed inset-y-0 left-0 w-72 max-w-[85vw] bg-[#0b111d] border-r border-slate-800 z-50"
+                                className="lg:hidden fixed inset-y-0 left-0 w-72 max-w-[85vw] bg-[#091211] border-r border-slate-800 z-50"
                                 initial={{ x: '-100%' }}
                                 animate={{ x: 0 }}
                                 exit={{ x: '-100%' }}
@@ -164,7 +164,7 @@ export default function AdminLayout({ title, description, actions, backHref, chi
 
                 <div className="lg:pl-64 flex flex-col min-h-screen">
                     {/* Top bar */}
-                    <header className="sticky top-0 z-20 h-16 bg-[#090d16]/85 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-6 flex items-center justify-between gap-4">
+                    <header className="sticky top-0 z-20 h-16 bg-[#070d0d]/85 backdrop-blur-md border-b border-slate-800/80 px-4 sm:px-6 flex items-center justify-between gap-4">
                         <div className="flex items-center gap-3 min-w-0">
                             <button
                                 onClick={() => setMobileOpen(true)}
@@ -179,7 +179,7 @@ export default function AdminLayout({ title, description, actions, backHref, chi
                         </div>
                         <Link
                             href="/admin/profile"
-                            className="w-9 h-9 shrink-0 rounded-full bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center font-bold text-white text-xs ring-2 ring-slate-800 hover:ring-indigo-500/60 transition"
+                            className="w-9 h-9 shrink-0 rounded-full bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center font-bold text-white text-xs ring-2 ring-slate-800 hover:ring-emerald-500/60 transition"
                             title="Profil & Akun"
                         >
                             {initials}

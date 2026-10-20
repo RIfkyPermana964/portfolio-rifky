@@ -43,7 +43,7 @@ function SectionHeading({ eyebrow, title, description, action }) {
     return (
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div className="max-w-2xl">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">{eyebrow}</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">{eyebrow}</span>
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">{title}</h2>
                 {description && <p className="text-slate-400 text-sm sm:text-base mt-3 leading-relaxed">{description}</p>}
             </div>
@@ -77,13 +77,13 @@ function Hero({ profile, stats }) {
 
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
                             Halo, saya{' '}
-                            <span className="bg-gradient-to-r from-indigo-400 via-indigo-300 to-violet-400 bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent">
                                 {name}
                             </span>
                         </h1>
 
                         <p className="text-lg sm:text-xl text-slate-200 font-semibold leading-relaxed flex items-start justify-center lg:justify-start gap-2">
-                            <Sparkles className="w-5 h-5 text-indigo-400 shrink-0 mt-1" />
+                            <Sparkles className="w-5 h-5 text-emerald-400 shrink-0 mt-1" />
                             <span>{profile?.title || 'Fresh Graduate S1 Informatika & Web Developer'}</span>
                         </p>
 
@@ -96,7 +96,7 @@ function Hero({ profile, stats }) {
                         <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-3 pt-2">
                             <a
                                 href="#projects"
-                                className="px-6 py-3 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2"
+                                className="px-6 py-3 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2"
                             >
                                 <FolderGit2 className="w-4 h-4" />
                                 Lihat Proyek
@@ -108,7 +108,7 @@ function Hero({ profile, stats }) {
                                     rel="noreferrer"
                                     className="px-6 py-3 text-sm font-semibold text-slate-100 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 rounded-xl transition-all flex items-center justify-center gap-2"
                                 >
-                                    <FileDown className="w-4 h-4 text-indigo-400" />
+                                    <FileDown className="w-4 h-4 text-emerald-400" />
                                     Unduh CV (PDF)
                                 </a>
                             ) : (
@@ -116,7 +116,7 @@ function Hero({ profile, stats }) {
                                     href="#contact"
                                     className="px-6 py-3 text-sm font-semibold text-slate-100 bg-slate-900/90 hover:bg-slate-800 border border-slate-700 rounded-xl transition-all flex items-center justify-center gap-2"
                                 >
-                                    <Send className="w-4 h-4 text-indigo-400" />
+                                    <Send className="w-4 h-4 text-emerald-400" />
                                     Hubungi Saya
                                 </a>
                             )}
@@ -140,13 +140,13 @@ function Hero({ profile, stats }) {
                         className="lg:col-span-5 flex justify-center order-1 lg:order-2"
                     >
                         <div className="relative group">
-                            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-indigo-500 to-violet-600 opacity-25 blur-xl group-hover:opacity-40 transition duration-500" />
+                            <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-emerald-500 to-cyan-600 opacity-25 blur-xl group-hover:opacity-40 transition duration-500" />
                             <div className="relative w-60 h-60 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl bg-slate-900/90 p-3 border border-slate-800 shadow-2xl">
                                 {profile?.avatar ? (
                                     <img src={storageUrl(profile.avatar)} alt={name} className="w-full h-full object-cover rounded-2xl" />
                                 ) : (
-                                    <div className="w-full h-full bg-[#0d1322] rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-slate-800/80">
-                                        <div className="w-20 h-20 rounded-2xl bg-indigo-950/60 border border-indigo-500/30 flex items-center justify-center mb-4 text-indigo-400">
+                                    <div className="w-full h-full bg-[#0b1514] rounded-2xl flex flex-col items-center justify-center p-6 text-center border border-slate-800/80">
+                                        <div className="w-20 h-20 rounded-2xl bg-emerald-950/60 border border-emerald-500/30 flex items-center justify-center mb-4 text-emerald-400">
                                             <Terminal className="w-9 h-9" />
                                         </div>
                                         <span className="font-bold text-white">{name}</span>
@@ -165,13 +165,13 @@ function About({ profile }) {
     const highlights = [
         {
             icon: GraduationCap,
-            tone: 'bg-indigo-950/80 border-indigo-500/30 text-indigo-400',
+            tone: 'bg-emerald-950/80 border-emerald-500/30 text-emerald-400',
             title: 'Pendidikan Akademik',
             text: 'Lulusan Sarjana Komputer (S.Kom) S1 Informatika. Memiliki pemahaman kuat mengenai algoritma, rekayasa perangkat lunak, serta konsep Object-Oriented Programming (OOP) yang diterapkan dalam arsitektur modern.',
         },
         {
             icon: Code2,
-            tone: 'bg-violet-950/80 border-violet-500/30 text-violet-400',
+            tone: 'bg-teal-950/80 border-teal-500/30 text-teal-300',
             title: 'Fullstack & Modern Frontend',
             text: 'Berpengalaman membangun aplikasi web berbasis Laravel dan database relasional, kini dipadukan dengan ekosistem modern React JS, Inertia.js, Tailwind CSS, dan animasi Framer Motion yang responsif.',
         },
@@ -184,7 +184,7 @@ function About({ profile }) {
     ];
 
     return (
-        <section id="about" className="py-20 bg-[#060911]/60 border-y border-slate-800/80">
+        <section id="about" className="py-20 bg-[#050a0a]/60 border-y border-slate-800/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Reveal>
                     <SectionHeading eyebrow="Tentang Saya" title="Lulusan Informatika dengan Passion di Web & IT Networking" />
@@ -226,7 +226,7 @@ function Skills({ skills }) {
                     {groups.map(([category, items], i) => (
                         <Reveal key={category} delay={i * 0.06} className="glow-card p-6 rounded-2xl">
                             <h3 className="text-sm font-bold text-white mb-4 pb-3 border-b border-slate-800/80 flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-indigo-400" />
+                                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                                 {category}
                             </h3>
                             <ul className="flex flex-wrap gap-2">
@@ -258,7 +258,7 @@ function Projects({ projects }) {
     const filtered = category === 'Semua' ? projects : projects.filter((p) => p.category === category);
 
     return (
-        <section id="projects" className="py-20 bg-[#060911]/60 border-y border-slate-800/80">
+        <section id="projects" className="py-20 bg-[#050a0a]/60 border-y border-slate-800/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Reveal>
                     <SectionHeading
@@ -279,12 +279,12 @@ function Projects({ projects }) {
                                 className={cn(
                                     'shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer flex items-center gap-2',
                                     category === c
-                                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                                        ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
                                         : 'bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white hover:border-slate-700',
                                 )}
                             >
                                 {c}
-                                <span className={cn('text-xs', category === c ? 'text-indigo-200' : 'text-slate-600')}>
+                                <span className={cn('text-xs', category === c ? 'text-emerald-200' : 'text-slate-600')}>
                                     {c === 'Semua' ? projects.length : counts[c]}
                                 </span>
                             </button>
@@ -387,12 +387,12 @@ function Contact({ profile }) {
     };
 
     return (
-        <section id="contact" className="py-20 bg-[#060911]/60 border-t border-slate-800/80">
+        <section id="contact" className="py-20 bg-[#050a0a]/60 border-t border-slate-800/80">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
                     <Reveal className="lg:col-span-5 space-y-6">
                         <div>
-                            <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">Hubungi Saya</span>
+                            <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Hubungi Saya</span>
                             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">Mari Berdiskusi &amp; Bekerja Sama!</h2>
                         </div>
                         <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
@@ -401,12 +401,12 @@ function Contact({ profile }) {
 
                         <div className="space-y-3">
                             <div className="glow-card p-4 rounded-xl flex items-center gap-4">
-                                <div className="w-11 h-11 shrink-0 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                                <div className="w-11 h-11 shrink-0 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                                     <Mail className="w-5 h-5" />
                                 </div>
                                 <div className="min-w-0 flex-1">
                                     <p className="text-xs text-slate-400">Email</p>
-                                    <a href={`mailto:${email}`} className="text-sm font-bold text-white hover:text-indigo-300 break-all">
+                                    <a href={`mailto:${email}`} className="text-sm font-bold text-white hover:text-emerald-300 break-all">
                                         {email}
                                     </a>
                                 </div>

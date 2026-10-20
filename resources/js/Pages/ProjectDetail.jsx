@@ -29,7 +29,7 @@ export default function ProjectDetail({ project, profile, relatedProjects = [] }
                 <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
                     <header className="mb-8">
                         {project.category && (
-                            <span className="inline-block px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-semibold text-indigo-400 mb-4">
+                            <span className="inline-block px-3 py-1 bg-slate-900 border border-slate-800 rounded-lg text-xs font-semibold text-emerald-400 mb-4">
                                 {project.category}
                             </span>
                         )}
@@ -59,7 +59,7 @@ export default function ProjectDetail({ project, profile, relatedProjects = [] }
                                             href={project.demo_url}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="w-full px-5 py-3 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2"
+                                            className="w-full px-5 py-3 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2"
                                         >
                                             <ExternalLink className="w-4 h-4" /> Buka Live Demo
                                         </a>
@@ -81,7 +81,7 @@ export default function ProjectDetail({ project, profile, relatedProjects = [] }
                                 {Array.isArray(project.tech_stack) && project.tech_stack.length > 0 && (
                                     <div>
                                         <p className="text-slate-400 flex items-center gap-2 mb-2">
-                                            <Layers className="w-4 h-4 text-indigo-400" /> Tech stack
+                                            <Layers className="w-4 h-4 text-emerald-400" /> Tech stack
                                         </p>
                                         <div className="flex flex-wrap gap-1.5">
                                             {project.tech_stack.map((tech) => (
@@ -95,14 +95,14 @@ export default function ProjectDetail({ project, profile, relatedProjects = [] }
                                 {project.category && (
                                     <div>
                                         <p className="text-slate-400 flex items-center gap-2 mb-1">
-                                            <Tag className="w-4 h-4 text-indigo-400" /> Kategori
+                                            <Tag className="w-4 h-4 text-emerald-400" /> Kategori
                                         </p>
                                         <p className="text-slate-200 font-medium">{project.category}</p>
                                     </div>
                                 )}
                                 <div>
                                     <p className="text-slate-400 flex items-center gap-2 mb-1">
-                                        <Calendar className="w-4 h-4 text-indigo-400" /> Ditambahkan
+                                        <Calendar className="w-4 h-4 text-emerald-400" /> Ditambahkan
                                     </p>
                                     <p className="text-slate-200 font-medium">{formatDate(project.created_at, { month: 'long', year: 'numeric' })}</p>
                                 </div>
@@ -115,7 +115,7 @@ export default function ProjectDetail({ project, profile, relatedProjects = [] }
                     <section className="mt-20">
                         <div className="flex items-end justify-between gap-4 mb-6">
                             <h2 className="text-xl sm:text-2xl font-extrabold text-white">Proyek Lainnya</h2>
-                            <a href="/#projects" className="text-sm font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                            <a href="/#projects" className="text-sm font-semibold text-emerald-400 hover:text-emerald-300 flex items-center gap-1">
                                 Semua proyek <ArrowRight className="w-4 h-4" />
                             </a>
                         </div>

@@ -19,7 +19,7 @@ export function SocialLinks({ profile, className = '' }) {
                     href={href}
                     target={href.startsWith('mailto:') ? undefined : '_blank'}
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 hover:bg-slate-800 transition-all"
+                    className="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-emerald-500/50 hover:bg-slate-800 transition-all"
                     aria-label={label}
                     title={label}
                 >
@@ -35,7 +35,7 @@ export default function Footer({ profile, isHome = false }) {
     const name = profile?.full_name || 'Rifky Permana, S.Kom.';
 
     return (
-        <footer className="bg-[#050811] border-t border-slate-800/80 py-12 mt-20 relative z-10">
+        <footer className="bg-[#040808] border-t border-slate-800/80 py-12 mt-20 relative z-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
                     <div>
@@ -45,7 +45,7 @@ export default function Footer({ profile, isHome = false }) {
 
                     <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-400" aria-label="Navigasi footer">
                         {sections.map((s) => (
-                            <a key={s.id} href={isHome ? `#${s.id}` : `/#${s.id}`} className="hover:text-indigo-400 transition-colors">
+                            <a key={s.id} href={isHome ? `#${s.id}` : `/#${s.id}`} className="hover:text-emerald-400 transition-colors">
                                 {s.label}
                             </a>
                         ))}

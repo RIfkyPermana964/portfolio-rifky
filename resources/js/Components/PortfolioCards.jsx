@@ -16,13 +16,13 @@ export function ProjectCard({ project }) {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                 ) : (
-                    <div className="w-full h-full bg-[#0d1322] flex items-center justify-center">
+                    <div className="w-full h-full bg-[#0b1514] flex items-center justify-center">
                         <Code2 className="w-12 h-12 text-slate-700" />
                     </div>
                 )}
                 <div className="absolute top-3 left-3 flex gap-1.5">
                     {project.category && (
-                        <span className="px-2.5 py-1 bg-slate-950/90 backdrop-blur-md rounded-md text-[11px] font-semibold text-indigo-300 border border-slate-800">
+                        <span className="px-2.5 py-1 bg-slate-950/90 backdrop-blur-md rounded-md text-[11px] font-semibold text-emerald-300 border border-slate-800">
                             {project.category}
                         </span>
                     )}
@@ -35,7 +35,7 @@ export function ProjectCard({ project }) {
             </div>
 
             <div className="p-5 flex-1 flex flex-col">
-                <h3 className="text-base font-bold text-white group-hover:text-indigo-300 transition-colors mb-2">
+                <h3 className="text-base font-bold text-white group-hover:text-emerald-300 transition-colors mb-2">
                     {/* Stretched link: the whole card is clickable */}
                     <Link href={`/projects/${project.slug}`} className="after:absolute after:inset-0 focus:outline-none">
                         {project.title}
@@ -55,7 +55,7 @@ export function ProjectCard({ project }) {
             </div>
 
             <div className="px-5 py-3.5 border-t border-slate-800/80 flex items-center justify-between text-sm">
-                <span className="text-indigo-400 font-semibold flex items-center gap-1">
+                <span className="text-emerald-400 font-semibold flex items-center gap-1">
                     Lihat detail <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </span>
                 <div className="flex items-center gap-1 relative z-10">
@@ -105,14 +105,14 @@ export function CertificateCard({ cert, onOpenImage }) {
             <div className="p-6 flex-1 flex flex-col">
                 <div className="flex items-start justify-between gap-3 mb-4">
                     {!cert.image && (
-                        <div className="w-10 h-10 rounded-xl bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                        <div className="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
                             <Award className="w-5 h-5" />
                         </div>
                     )}
                     {cert.category && <Badge color="slate" className="ml-auto">{cert.category}</Badge>}
                 </div>
                 <h3 className="text-base font-bold text-white mb-1">{cert.title}</h3>
-                <p className="text-sm font-semibold text-indigo-400 mb-3">{cert.issuer}</p>
+                <p className="text-sm font-semibold text-emerald-400 mb-3">{cert.issuer}</p>
                 {cert.description && <p className="text-sm text-slate-400 leading-relaxed line-clamp-3 mb-4">{cert.description}</p>}
 
                 <div className="mt-auto pt-4 border-t border-slate-800/80 flex items-center justify-between text-sm">
@@ -125,7 +125,7 @@ export function CertificateCard({ cert, onOpenImage }) {
                             href={cert.credential_url}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1 transition-colors"
+                            className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1 transition-colors"
                         >
                             Verifikasi <ExternalLink className="w-3.5 h-3.5" />
                         </a>

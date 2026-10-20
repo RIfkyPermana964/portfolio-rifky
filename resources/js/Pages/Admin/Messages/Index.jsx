@@ -72,13 +72,13 @@ export default function MessagesIndex({ messages, filter }) {
                                     onClick={() => openMessage(m)}
                                     className={cn(
                                         'w-full text-left px-5 py-4 flex gap-4 transition-colors cursor-pointer',
-                                        m.is_read ? 'hover:bg-slate-800/25' : 'bg-indigo-500/[0.04] hover:bg-indigo-500/10',
+                                        m.is_read ? 'hover:bg-slate-800/25' : 'bg-emerald-500/[0.04] hover:bg-emerald-500/10',
                                     )}
                                 >
                                     <div
                                         className={cn(
                                             'w-10 h-10 shrink-0 rounded-full flex items-center justify-center text-sm font-bold',
-                                            m.is_read ? 'bg-slate-800 text-slate-400' : 'bg-indigo-600 text-white',
+                                            m.is_read ? 'bg-slate-800 text-slate-400' : 'bg-emerald-600 text-white',
                                         )}
                                     >
                                         {m.name.charAt(0).toUpperCase()}
@@ -88,7 +88,7 @@ export default function MessagesIndex({ messages, filter }) {
                                             <p className={cn('text-sm truncate', m.is_read ? 'text-slate-300' : 'text-white font-bold')}>
                                                 {m.name}
                                             </p>
-                                            {!m.is_read && <span className="w-2 h-2 rounded-full bg-indigo-400 shrink-0" />}
+                                            {!m.is_read && <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />}
                                             <span className="ml-auto text-xs text-slate-500 shrink-0">{timeAgo(m.created_at)}</span>
                                         </div>
                                         <p className={cn('text-sm truncate', m.is_read ? 'text-slate-400' : 'text-slate-200 font-medium')}>
@@ -140,7 +140,7 @@ export default function MessagesIndex({ messages, filter }) {
                             </div>
                             <div className="min-w-0">
                                 <p className="text-sm font-semibold text-white">{open.name}</p>
-                                <a href={`mailto:${open.email}`} className="text-xs text-indigo-300 hover:underline break-all">
+                                <a href={`mailto:${open.email}`} className="text-xs text-emerald-300 hover:underline break-all">
                                     {open.email}
                                 </a>
                             </div>

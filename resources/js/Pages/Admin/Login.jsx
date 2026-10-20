@@ -33,15 +33,15 @@ export default function Login({ flash = {}, errors: propErrors = {} }) {
     const combinedErrors = { ...propErrors, ...errors };
 
     return (
-        <div className="bg-[#090d16] text-slate-100 min-h-screen flex items-center justify-center p-4 font-sans selection:bg-indigo-600 selection:text-white relative overflow-hidden">
+        <div className="bg-[#070d0d] text-slate-100 min-h-screen flex items-center justify-center p-4 font-sans selection:bg-emerald-600 selection:text-white relative overflow-hidden">
             <Head>
                 <title>Admin Login | Portfolio Rifky Permana</title>
             </Head>
 
             {/* Ambient Background Gradient Orbs */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-600/15 blur-[120px]"></div>
-                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-violet-600/15 blur-[120px]"></div>
+                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-emerald-600/15 blur-[120px]"></div>
+                <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-cyan-600/15 blur-[120px]"></div>
             </div>
 
             <motion.div 
@@ -52,9 +52,9 @@ export default function Login({ flash = {}, errors: propErrors = {} }) {
             >
                 {/* Header Logo & Title */}
                 <div className="text-center mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-slate-900/90 border border-slate-800 mx-auto flex items-center justify-center p-2.5 shadow-xl shadow-indigo-600/20 mb-4 transition-all duration-300 hover:border-indigo-500/50 hover:shadow-indigo-600/40">
+                    <div className="w-16 h-16 rounded-2xl bg-slate-900/90 border border-slate-800 mx-auto flex items-center justify-center p-2.5 shadow-xl shadow-emerald-600/20 mb-4 transition-all duration-300 hover:border-emerald-500/50 hover:shadow-emerald-600/40">
                         {logoFailed ? (
-                            <Sparkles className="w-8 h-8 text-indigo-400" />
+                            <Sparkles className="w-8 h-8 text-emerald-400" />
                         ) : (
                             <img
                                 src="/images/logo.png"
@@ -109,7 +109,7 @@ export default function Login({ flash = {}, errors: propErrors = {} }) {
                                     placeholder="nama@email.com" 
                                     required 
                                     autoComplete="email"
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
+                                    className="w-full pl-10 pr-4 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600"
                                 />
                             </div>
                             {errors.email && (
@@ -133,7 +133,7 @@ export default function Login({ flash = {}, errors: propErrors = {} }) {
                                     placeholder="••••••••" 
                                     required 
                                     autoComplete="current-password"
-                                    className="w-full pl-10 pr-10 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all placeholder:text-slate-600"
+                                    className="w-full pl-10 pr-10 py-3 bg-slate-900/90 border border-slate-700/80 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600"
                                 />
                                 <button
                                     type="button"
@@ -155,7 +155,7 @@ export default function Login({ flash = {}, errors: propErrors = {} }) {
                                     type="checkbox" 
                                     checked={data.remember}
                                     onChange={e => setData('remember', e.target.checked)}
-                                    className="w-4 h-4 rounded bg-slate-900 border-slate-700 text-indigo-600 focus:ring-0 cursor-pointer"
+                                    className="w-4 h-4 rounded bg-slate-900 border-slate-700 text-emerald-600 focus:ring-0 cursor-pointer"
                                 />
                                 <span className="hover:text-slate-300 transition-colors">Ingat saya</span>
                             </label>
@@ -167,7 +167,7 @@ export default function Login({ flash = {}, errors: propErrors = {} }) {
                             whileTap={{ scale: 0.99 }}
                             type="submit" 
                             disabled={processing}
-                            className="w-full py-3.5 text-sm font-bold text-white bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 disabled:opacity-50 rounded-xl shadow-lg shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                            className="w-full py-3.5 text-sm font-bold text-white bg-gradient-to-r from-emerald-600 via-emerald-500 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 disabled:opacity-50 rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer"
                         >
                             {processing ? (
                                 <span>Memverifikasi Akun...</span>
@@ -184,7 +184,7 @@ export default function Login({ flash = {}, errors: propErrors = {} }) {
                     <div className="mt-6 pt-6 border-t border-slate-800/80 text-center">
                         <Link 
                             href="/" 
-                            className="text-xs text-slate-400 hover:text-indigo-400 transition-colors inline-flex items-center gap-1.5"
+                            className="text-xs text-slate-400 hover:text-emerald-400 transition-colors inline-flex items-center gap-1.5"
                         >
                             <ArrowLeft className="w-3.5 h-3.5" />
                             <span>Kembali ke Website Utama</span>

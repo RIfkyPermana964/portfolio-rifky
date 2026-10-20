@@ -6,10 +6,10 @@ import { Badge, Button, Card, EmptyState, cn, formatDate, storageUrl, timeAgo } 
 
 function StatCard({ label, value, icon: Icon, href, tone, note }) {
     const tones = {
-        indigo: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
-        cyan: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
-        violet: 'bg-violet-500/10 text-violet-400 border-violet-500/30',
         emerald: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+        cyan: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
+        teal: 'bg-teal-500/10 text-teal-300 border-teal-500/30',
+        lime: 'bg-lime-500/10 text-lime-300 border-lime-500/30',
     };
     return (
         <Link href={href} className="group">
@@ -45,15 +45,15 @@ export default function Dashboard({ stats, recentProjects = [], recentMessages =
             }
         >
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <StatCard label="Proyek" value={stats.projects} icon={FolderGit2} href="/admin/projects" tone="indigo" />
+                <StatCard label="Proyek" value={stats.projects} icon={FolderGit2} href="/admin/projects" tone="emerald" />
                 <StatCard label="Sertifikat" value={stats.certificates} icon={Award} href="/admin/certificates" tone="cyan" />
-                <StatCard label="Keahlian" value={stats.skills} icon={Wrench} href="/admin/skills" tone="violet" />
+                <StatCard label="Keahlian" value={stats.skills} icon={Wrench} href="/admin/skills" tone="teal" />
                 <StatCard
                     label="Pesan Masuk"
                     value={stats.messages}
                     icon={Inbox}
                     href="/admin/messages"
-                    tone="emerald"
+                    tone="lime"
                     note={stats.unreadMessages > 0 ? `${stats.unreadMessages} belum dibaca` : null}
                 />
             </div>
@@ -63,7 +63,7 @@ export default function Dashboard({ stats, recentProjects = [], recentMessages =
                 <Card className="lg:col-span-3 overflow-hidden">
                     <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800/80">
                         <h2 className="font-bold text-white">Proyek Terbaru</h2>
-                        <Link href="/admin/projects" className="text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+                        <Link href="/admin/projects" className="text-sm text-emerald-400 hover:text-emerald-300 font-medium">
                             Lihat semua
                         </Link>
                     </div>
@@ -109,7 +109,7 @@ export default function Dashboard({ stats, recentProjects = [], recentMessages =
                 <Card className="lg:col-span-2 overflow-hidden">
                     <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800/80">
                         <h2 className="font-bold text-white">Pesan Terbaru</h2>
-                        <Link href="/admin/messages" className="text-sm text-indigo-400 hover:text-indigo-300 font-medium">
+                        <Link href="/admin/messages" className="text-sm text-emerald-400 hover:text-emerald-300 font-medium">
                             Buka inbox
                         </Link>
                     </div>
@@ -121,7 +121,7 @@ export default function Dashboard({ stats, recentProjects = [], recentMessages =
                                 <li key={msg.id}>
                                     <Link href="/admin/messages" className="block px-5 py-3.5 hover:bg-slate-800/30 transition-colors">
                                         <div className="flex items-center gap-2">
-                                            {!msg.is_read && <span className="w-2 h-2 rounded-full bg-indigo-400 shrink-0" title="Belum dibaca" />}
+                                            {!msg.is_read && <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" title="Belum dibaca" />}
                                             <p className={cn('text-sm truncate flex-1', msg.is_read ? 'text-slate-300' : 'text-white font-semibold')}>
                                                 {msg.name}
                                             </p>
