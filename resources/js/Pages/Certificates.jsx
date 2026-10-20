@@ -44,7 +44,7 @@ export default function Certificates({ certificates = [], profile }) {
                                 className={cn(
                                     'shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer',
                                     category === c
-                                        ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30'
+                                        ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
                                         : 'bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white',
                                 )}
                             >
@@ -70,13 +70,13 @@ export default function Certificates({ certificates = [], profile }) {
                     <div className="space-y-4">
                         <img src={storageUrl(preview.image)} alt={preview.title} className="w-full h-auto rounded-xl border border-slate-800" />
                         <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
-                            <span className="text-emerald-300 font-semibold">{preview.issuer}</span>
+                            <span className="text-blue-300 font-semibold">{preview.issuer}</span>
                             {preview.credential_url && (
                                 <a
                                     href={preview.credential_url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
+                                    className="text-blue-400 hover:text-blue-300 font-semibold flex items-center gap-1"
                                 >
                                     Verifikasi kredensial <ExternalLink className="w-4 h-4" />
                                 </a>

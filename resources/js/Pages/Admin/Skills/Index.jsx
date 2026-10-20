@@ -21,7 +21,7 @@ function SkillChip({ skill, categories, onDelete }) {
 
     if (editing) {
         return (
-            <form onSubmit={save} className="w-full flex flex-col sm:flex-row gap-2 p-3 rounded-xl bg-slate-900 border border-emerald-500/40">
+            <form onSubmit={save} className="w-full flex flex-col sm:flex-row gap-2 p-3 rounded-xl bg-slate-900 border border-blue-500/40">
                 <Combobox
                     options={categories}
                     value={data.category}
@@ -64,7 +64,7 @@ function SkillChip({ skill, categories, onDelete }) {
             {skill.name}
             <button
                 onClick={() => setEditing(true)}
-                className="p-1 rounded-md text-slate-500 hover:text-emerald-300 hover:bg-emerald-500/10 cursor-pointer"
+                className="p-1 rounded-md text-slate-500 hover:text-blue-300 hover:bg-blue-500/10 cursor-pointer"
                 aria-label={`Edit ${skill.name}`}
             >
                 <Pencil className="w-3.5 h-3.5" />

@@ -55,7 +55,7 @@ export function timeAgo(value) {
 /* ------------------------------------------------------------------ */
 
 const buttonVariants = {
-    primary: 'bg-emerald-600 text-white hover:bg-emerald-500 shadow-lg shadow-emerald-600/25',
+    primary: 'bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-600/25',
     secondary: 'bg-slate-800/80 text-slate-200 hover:bg-slate-700 border border-slate-700/80',
     ghost: 'text-slate-300 hover:text-white hover:bg-slate-800/70',
     danger: 'bg-rose-600 text-white hover:bg-rose-500 shadow-lg shadow-rose-600/20',
@@ -128,7 +128,7 @@ const controlBase =
 const controlState = (error) =>
     error
         ? 'border-rose-500/70 focus:border-rose-500 focus:ring-rose-500/20'
-        : 'border-slate-700/80 hover:border-slate-600 focus:border-emerald-500 focus:ring-emerald-500/20';
+        : 'border-slate-700/80 hover:border-slate-600 focus:border-blue-500 focus:ring-blue-500/20';
 
 export function Field({ label, hint, error, required, htmlFor, className, children }) {
     return (
@@ -236,7 +236,7 @@ export function Toggle({ checked, onChange, label, description }) {
                     checked={checked}
                     onChange={(e) => onChange(e.target.checked)}
                 />
-                <span className="block w-11 h-6 rounded-full bg-slate-700 peer-checked:bg-emerald-600 transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-emerald-400" />
+                <span className="block w-11 h-6 rounded-full bg-slate-700 peer-checked:bg-blue-600 transition-colors peer-focus-visible:ring-2 peer-focus-visible:ring-blue-400" />
                 <span className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform peer-checked:translate-x-5" />
             </span>
         </label>
@@ -279,13 +279,13 @@ export function TagInput({ label, hint, error, value = [], onChange, placeholder
                 {value.map((tag) => (
                     <span
                         key={tag}
-                        className="inline-flex items-center gap-1 pl-2.5 pr-1 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-200 text-xs font-medium"
+                        className="inline-flex items-center gap-1 pl-2.5 pr-1 py-1 rounded-lg bg-blue-500/15 border border-blue-500/30 text-blue-200 text-xs font-medium"
                     >
                         {tag}
                         <button
                             type="button"
                             onClick={() => onChange(value.filter((t) => t !== tag))}
-                            className="p-0.5 rounded hover:bg-emerald-500/30 text-emerald-300 cursor-pointer"
+                            className="p-0.5 rounded hover:bg-blue-500/30 text-blue-300 cursor-pointer"
                             aria-label={`Hapus ${tag}`}
                         >
                             <X className="w-3 h-3" />
@@ -345,13 +345,13 @@ export function ImageUpload({ label, hint, error, file, currentUrl, onChange, as
                 onDragLeave={() => setDragging(false)}
                 onDrop={handleDrop}
                 className={cn(
-                    'relative group rounded-xl border-2 border-dashed overflow-hidden cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400',
+                    'relative group rounded-xl border-2 border-dashed overflow-hidden cursor-pointer transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400',
                     aspect,
                     dragging
-                        ? 'border-emerald-400 bg-emerald-500/10'
+                        ? 'border-blue-400 bg-blue-500/10'
                         : error
                           ? 'border-rose-500/60 bg-slate-900/60'
-                          : 'border-slate-700 bg-slate-900/60 hover:border-emerald-500/60',
+                          : 'border-slate-700 bg-slate-900/60 hover:border-blue-500/60',
                 )}
             >
                 {shown ? (
@@ -364,7 +364,7 @@ export function ImageUpload({ label, hint, error, file, currentUrl, onChange, as
                     </>
                 ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center p-4">
-                        <div className="w-11 h-11 rounded-xl bg-slate-800 flex items-center justify-center text-emerald-400">
+                        <div className="w-11 h-11 rounded-xl bg-slate-800 flex items-center justify-center text-blue-400">
                             <ImageIcon className="w-5 h-5" />
                         </div>
                         <p className="text-sm text-slate-300 font-medium">
@@ -421,7 +421,7 @@ export function FileUpload({ label, hint, error, file, currentUrl, currentLabel,
                             href={currentUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-sm text-emerald-300 hover:text-emerald-200 hover:underline truncate block"
+                            className="text-sm text-blue-300 hover:text-blue-200 hover:underline truncate block"
                         >
                             {currentLabel || 'Lihat file saat ini'}
                         </a>
@@ -489,7 +489,7 @@ export function Card({ className, children, ...props }) {
 
 export function Badge({ color = 'indigo', className, children }) {
     const colors = {
-        indigo: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
+        indigo: 'bg-blue-500/10 text-blue-300 border-blue-500/30',
         emerald: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
         amber: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
         rose: 'bg-rose-500/10 text-rose-300 border-rose-500/30',
@@ -557,7 +557,7 @@ export function Modal({ open, onClose, title, size = 'md', children, footer }) {
                         exit={{ opacity: 0, y: 24, scale: 0.98 }}
                         transition={{ duration: 0.2 }}
                         className={cn(
-                            'relative w-full bg-[#0b1514] border border-slate-800 shadow-2xl rounded-t-2xl sm:rounded-2xl max-h-[90vh] flex flex-col',
+                            'relative w-full bg-[#0d1322] border border-slate-800 shadow-2xl rounded-t-2xl sm:rounded-2xl max-h-[90vh] flex flex-col',
                             widths[size],
                         )}
                     >
@@ -660,7 +660,7 @@ export function Pagination({ meta }) {
                             preserveScroll
                             className={cn(
                                 navClass,
-                                link.active ? 'bg-emerald-600 text-white' : 'text-slate-300 hover:bg-slate-800',
+                                link.active ? 'bg-blue-600 text-white' : 'text-slate-300 hover:bg-slate-800',
                             )}
                         >
                             {link.label}

@@ -41,18 +41,18 @@ function Logo({ profile }) {
 
     return (
         <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center p-1.5 transition-all duration-300 group-hover:border-emerald-500/50">
+            <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center p-1.5 transition-all duration-300 group-hover:border-blue-500/50">
                 {imgFailed ? (
-                    <Sparkles className="w-5 h-5 text-emerald-400" />
+                    <Sparkles className="w-5 h-5 text-blue-400" />
                 ) : (
                     <img src="/images/logo.png" alt="" className="w-full h-full object-contain" onError={() => setImgFailed(true)} />
                 )}
             </div>
             <div className="flex flex-col leading-tight">
-                <span className="font-bold text-white text-[15px] tracking-tight group-hover:text-emerald-300 transition-colors">
+                <span className="font-bold text-white text-[15px] tracking-tight group-hover:text-blue-300 transition-colors">
                     {displayName}
                 </span>
-                <span className="text-[11px] text-emerald-400/90 font-mono tracking-wide">{tagline}</span>
+                <span className="text-[11px] text-blue-400/90 font-mono tracking-wide">{tagline}</span>
             </div>
         </Link>
     );
@@ -90,7 +90,7 @@ export default function Navbar({ auth, profile, isHome = false }) {
             className={cn(
                 'fixed top-0 inset-x-0 z-50 transition-all duration-300',
                 scrolled || mobileOpen
-                    ? 'bg-[#070d0d]/90 backdrop-blur-md py-3 shadow-lg shadow-black/30 border-b border-slate-800/80'
+                    ? 'bg-[#090d16]/90 backdrop-blur-md py-3 shadow-lg shadow-black/30 border-b border-slate-800/80'
                     : 'bg-transparent py-4 border-b border-transparent',
             )}
         >
@@ -107,7 +107,7 @@ export default function Navbar({ auth, profile, isHome = false }) {
                                 className={cn(
                                     'px-3.5 py-1.5 text-sm font-medium rounded-full transition-colors',
                                     active === item.id
-                                        ? 'bg-emerald-600 text-white'
+                                        ? 'bg-blue-600 text-white'
                                         : 'text-slate-300 hover:text-white hover:bg-slate-800/70',
                                 )}
                             >
@@ -122,13 +122,13 @@ export default function Navbar({ auth, profile, isHome = false }) {
                                 href="/admin/dashboard"
                                 className="px-3.5 py-2 text-sm font-semibold text-slate-200 bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 rounded-xl transition-colors flex items-center gap-1.5"
                             >
-                                <LayoutDashboard className="w-4 h-4 text-emerald-400" />
+                                <LayoutDashboard className="w-4 h-4 text-blue-400" />
                                 Dashboard
                             </Link>
                         )}
                         <a
                             href={hrefFor('contact')}
-                            className="px-4 py-2 text-sm font-bold text-white rounded-xl bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 shadow-md shadow-emerald-600/25 transition-all flex items-center gap-1.5"
+                            className="px-4 py-2 text-sm font-bold text-white rounded-xl bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 shadow-md shadow-blue-600/25 transition-all flex items-center gap-1.5"
                         >
                             <Send className="w-4 h-4" />
                             Hubungi Saya
@@ -165,10 +165,10 @@ export default function Navbar({ auth, profile, isHome = false }) {
                                             onClick={() => setMobileOpen(false)}
                                             className={cn(
                                                 'flex items-center gap-3 py-3 px-3 rounded-xl text-base font-medium transition-colors',
-                                                active === item.id ? 'bg-emerald-600/15 text-white' : 'text-slate-300 hover:bg-slate-800/80',
+                                                active === item.id ? 'bg-blue-600/15 text-white' : 'text-slate-300 hover:bg-slate-800/80',
                                             )}
                                         >
-                                            <Icon className="w-5 h-5 text-emerald-400" />
+                                            <Icon className="w-5 h-5 text-blue-400" />
                                             {item.label}
                                         </a>
                                     );
@@ -178,7 +178,7 @@ export default function Navbar({ auth, profile, isHome = false }) {
                                         href="/admin/dashboard"
                                         className="flex items-center gap-3 py-3 px-3 rounded-xl text-base font-medium text-slate-300 hover:bg-slate-800/80"
                                     >
-                                        <LayoutDashboard className="w-5 h-5 text-emerald-400" />
+                                        <LayoutDashboard className="w-5 h-5 text-blue-400" />
                                         Dashboard Admin
                                     </Link>
                                 )}

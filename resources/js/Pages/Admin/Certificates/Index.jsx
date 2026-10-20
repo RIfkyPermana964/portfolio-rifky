@@ -71,11 +71,11 @@ export default function CertificatesIndex({ certificates, filters }) {
                                     <div className="min-w-0">
                                         <Link
                                             href={`/admin/certificates/${cert.id}/edit`}
-                                            className="font-semibold text-white hover:text-emerald-300 text-sm line-clamp-1"
+                                            className="font-semibold text-white hover:text-blue-300 text-sm line-clamp-1"
                                         >
                                             {cert.title}
                                         </Link>
-                                        <p className="text-xs text-emerald-300/80 truncate">{cert.issuer}</p>
+                                        <p className="text-xs text-blue-300/80 truncate">{cert.issuer}</p>
                                         <div className="flex flex-wrap items-center gap-2 mt-1.5">
                                             <Badge>{cert.category}</Badge>
                                             {cert.issue_date && (

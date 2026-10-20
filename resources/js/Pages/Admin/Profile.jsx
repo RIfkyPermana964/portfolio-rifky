@@ -294,7 +294,7 @@ export default function Profile({ profile, account }) {
                         onClick={() => setTab(key)}
                         className={cn(
                             'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer',
-                            tab === key ? 'bg-emerald-600 text-white shadow' : 'text-slate-400 hover:text-white',
+                            tab === key ? 'bg-blue-600 text-white shadow' : 'text-slate-400 hover:text-white',
                         )}
                     >
                         <Icon className="w-4 h-4" />

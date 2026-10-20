@@ -16,7 +16,7 @@ createInertiaApp({
         createRoot(el).render(<App {...props} />);
     },
     progress: {
-        color: '#10b981',
+        color: '#3b82f6',
         showSpinner: false,
     },
 });
