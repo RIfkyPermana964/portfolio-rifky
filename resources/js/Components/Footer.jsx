@@ -1,76 +1,64 @@
 import React from 'react';
-import { Mail, Heart, Sparkles } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { sections } from '@/Components/Navbar';
+import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/Components/BrandIcons';
 
-export default function Footer({ profile }) {
-    const currentYear = new Date().getFullYear();
+export function SocialLinks({ profile, className = '' }) {
+    const links = [
+        { href: profile?.github_url, label: 'GitHub', icon: GithubIcon },
+        { href: profile?.linkedin_url, label: 'LinkedIn', icon: LinkedinIcon },
+        { href: profile?.instagram_url, label: 'Instagram', icon: InstagramIcon },
+        { href: profile?.email && `mailto:${profile.email}`, label: 'Email', icon: Mail },
+    ].filter((l) => l.href);
 
     return (
-        <footer className="bg-[#050811] border-t border-slate-800/80 py-12 mt-20 relative overflow-hidden">
-            {/* Background ambient glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-24 bg-indigo-600/10 blur-3xl pointer-events-none"></div>
+        <div className={`flex items-center gap-2 ${className}`}>
+            {links.map(({ href, label, icon: Icon }) => (
+                <a
+                    key={label}
+                    href={href}
+                    target={href.startsWith('mailto:') ? undefined : '_blank'}
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 hover:bg-slate-800 transition-all"
+                    aria-label={label}
+                    title={label}
+                >
+                    <Icon className="w-[18px] h-[18px]" />
+                </a>
+            ))}
+        </div>
+    );
+}
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                    {/* Brand info */}
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1 shadow-sm">
-                            <Sparkles className="w-5 h-5 text-indigo-400" />
-                        </div>
-                        <div>
-                            <p className="font-bold text-slate-200 text-sm tracking-tight">
-                                {profile?.full_name || 'Rifky Permana, S.Kom.'}
-                            </p>
-                            <p className="text-xs text-slate-400">
-                                Fresh Graduate Informatika &bull; Full-stack Web Developer
-                            </p>
-                        </div>
+export default function Footer({ profile, isHome = false }) {
+    const year = new Date().getFullYear();
+    const name = profile?.full_name || 'Rifky Permana, S.Kom.';
+
+    return (
+        <footer className="bg-[#050811] border-t border-slate-800/80 py-12 mt-20 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                    <div>
+                        <p className="font-bold text-slate-100">{name}</p>
+                        <p className="text-sm text-slate-400 mt-0.5">{profile?.title}</p>
                     </div>
 
-                    {/* Quick navigation */}
-                    <div className="flex flex-wrap justify-center items-center gap-6 text-xs text-slate-400 font-medium">
-                        <a href="#about" className="hover:text-indigo-400 transition-colors">Tentang</a>
-                        <a href="#skills" className="hover:text-indigo-400 transition-colors">Keahlian</a>
-                        <a href="#projects" className="hover:text-indigo-400 transition-colors">Proyek</a>
-                        <a href="#certificates" className="hover:text-indigo-400 transition-colors">Sertifikasi</a>
-                        <a href="#contact" className="hover:text-indigo-400 transition-colors">Kontak</a>
-                    </div>
+                    <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-400" aria-label="Navigasi footer">
+                        {sections.map((s) => (
+                            <a key={s.id} href={isHome ? `#${s.id}` : `/#${s.id}`} className="hover:text-indigo-400 transition-colors">
+                                {s.label}
+                            </a>
+                        ))}
+                    </nav>
 
-                    {/* Social icons */}
-                    <div className="flex items-center space-x-3">
-                        <a 
-                            href={profile?.github_url || 'https://github.com'} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 hover:bg-slate-800 transition-all duration-200"
-                            title="GitHub"
-                        >
-                            <i className="ri-github-fill text-lg"></i>
-                        </a>
-                        <a 
-                            href={profile?.linkedin_url || 'https://linkedin.com'} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 hover:bg-slate-800 transition-all duration-200"
-                            title="LinkedIn"
-                        >
-                            <i className="ri-linkedin-fill text-lg"></i>
-                        </a>
-                        <a 
-                            href={`mailto:${profile?.email || 'rifkypermana.dev@gmail.com'}`} 
-                            className="w-9 h-9 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/50 hover:bg-slate-800 transition-all duration-200"
-                            title="Email"
-                        >
-                            <Mail className="w-4 h-4" />
-                        </a>
-                    </div>
+                    <SocialLinks profile={profile} />
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-slate-900/90 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
-                    <p>&copy; {currentYear} {profile?.full_name || 'Rifky Permana'}. Hak cipta dilindungi.</p>
-                    <p className="flex items-center gap-1.5">
-                        Dibuat dengan <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> menggunakan{' '}
-                        <span className="text-indigo-400 font-semibold">Laravel + React (Inertia.js)</span> &amp; Tailwind CSS
+                <div className="mt-10 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+                    <p>
+                        &copy; {year} {name.split(',')[0]}. Hak cipta dilindungi.
                     </p>
+                    <p>Dibuat dengan Laravel, React &amp; Tailwind CSS</p>
                 </div>
             </div>
         </footer>

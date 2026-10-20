@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +46,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('certificates', CertificateController::class)->except(['show']);
 
         // CRUD Skills
-        Route::resource('skills', App\Http\Controllers\Admin\SkillController::class)->except(['show']);
+        Route::resource('skills', SkillController::class)->only(['index', 'store', 'update', 'destroy']);
+
+        // Pesan Masuk (Contact Messages)
+        Route::resource('messages', MessageController::class)->only(['index', 'update', 'destroy']);
 
         // Profile & Resume Management
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

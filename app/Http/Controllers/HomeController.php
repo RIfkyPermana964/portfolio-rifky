@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $profile = Profile::first() ?? new Profile();
-        $projects = Project::orderBy('created_at', 'desc')->get();
+        $projects = Project::orderBy('is_featured', 'desc')->orderBy('created_at', 'desc')->get();
         $certificates = Certificate::orderBy('issue_date', 'desc')->get();
 
         $skills = \App\Models\Skill::orderBy('category')->orderBy('name')->get()->groupBy('category');
@@ -31,9 +31,16 @@ class HomeController extends Controller
     {
         $project = Project::where('slug', $slug)->firstOrFail();
         $profile = Profile::first();
+        $relatedProjects = Project::where('id', '!=', $project->id)
+            ->orderByRaw('category = ? desc', [$project->category])
+            ->latest()
+            ->take(3)
+            ->get();
+
         return Inertia::render('ProjectDetail', [
             'project' => $project,
             'profile' => $profile,
+            'relatedProjects' => $relatedProjects,
         ]);
     }
 

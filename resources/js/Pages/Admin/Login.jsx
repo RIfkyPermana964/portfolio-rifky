@@ -15,6 +15,7 @@ import {
 
 export default function Login({ flash = {}, errors: propErrors = {} }) {
     const [showPassword, setShowPassword] = useState(false);
+    const [logoFailed, setLogoFailed] = useState(false);
 
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
@@ -52,15 +53,16 @@ export default function Login({ flash = {}, errors: propErrors = {} }) {
                 {/* Header Logo & Title */}
                 <div className="text-center mb-8">
                     <div className="w-16 h-16 rounded-2xl bg-slate-900/90 border border-slate-800 mx-auto flex items-center justify-center p-2.5 shadow-xl shadow-indigo-600/20 mb-4 transition-all duration-300 hover:border-indigo-500/50 hover:shadow-indigo-600/40">
-                        <img 
-                            src="/images/logo.png" 
-                            alt="Logo" 
-                            className="w-full h-full object-contain"
-                            onError={(e) => {
-                                e.target.style.display = 'none';
-                            }}
-                        />
-                        <Sparkles className="w-8 h-8 text-indigo-400" />
+                        {logoFailed ? (
+                            <Sparkles className="w-8 h-8 text-indigo-400" />
+                        ) : (
+                            <img
+                                src="/images/logo.png"
+                                alt="Logo"
+                                className="w-full h-full object-contain"
+                                onError={() => setLogoFailed(true)}
+                            />
+                        )}
                     </div>
                     <h1 className="text-2xl font-extrabold text-white tracking-tight">
                         Admin Dashboard Login

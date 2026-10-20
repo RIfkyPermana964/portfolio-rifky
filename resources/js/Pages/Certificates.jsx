@@ -1,112 +1,90 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Head, Link } from '@inertiajs/react';
-import { motion } from 'framer-motion';
-import Navbar from '@/Components/Navbar';
-import Footer from '@/Components/Footer';
-import { ArrowLeft, Award, ExternalLink, Calendar } from 'lucide-react';
+import { ChevronRight, ExternalLink } from 'lucide-react';
+import PublicLayout from '@/Layouts/PublicLayout';
+import { CertificateCard } from '@/Components/PortfolioCards';
+import { Modal, cn, storageUrl } from '@/Components/ui';
 
 export default function Certificates({ certificates = [], profile }) {
+    const [category, setCategory] = useState('Semua');
+    const [preview, setPreview] = useState(null);
+
+    const categories = ['Semua', ...new Set(certificates.map((c) => c.category).filter(Boolean))];
+    const filtered = category === 'Semua' ? certificates : certificates.filter((c) => c.category === category);
+
     return (
-        <div className="bg-[#090d16] text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-600 selection:text-white relative">
+        <PublicLayout profile={profile}>
             <Head>
-                <title>Sertifikasi &amp; Prestasi | Rifky Permana, S.Kom.</title>
-                <meta name="description" content="Seluruh lisensi, penghargaan, dan bukti kompetensi resmi yang dimiliki Rifky Permana." />
+                <title>{`Sertifikasi & Prestasi | ${profile?.full_name || 'Rifky Permana'}`}</title>
+                <meta name="description" content="Lisensi, penghargaan, dan bukti kompetensi resmi." />
             </Head>
 
-            {/* Ambient Glow */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] rounded-full bg-indigo-600/10 blur-[130px]"></div>
-                <div className="absolute bottom-[20%] right-[10%] w-[450px] h-[450px] rounded-full bg-violet-600/10 blur-[140px]"></div>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-8">
+                <nav className="flex items-center gap-1.5 text-sm text-slate-500 mb-6" aria-label="Breadcrumb">
+                    <Link href="/" className="hover:text-slate-200 transition-colors">Beranda</Link>
+                    <ChevronRight className="w-4 h-4" />
+                    <span className="text-slate-300">Sertifikasi</span>
+                </nav>
+
+                <header className="mb-8">
+                    <h1 className="text-3xl sm:text-4xl font-extrabold text-white">Sertifikasi &amp; Prestasi</h1>
+                    <p className="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+                        {certificates.length} lisensi, penghargaan, dan bukti kompetensi resmi di bidang IT.
+                    </p>
+                </header>
+
+                {categories.length > 2 && (
+                    <div className="flex gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap" role="tablist">
+                        {categories.map((c) => (
+                            <button
+                                key={c}
+                                role="tab"
+                                aria-selected={category === c}
+                                onClick={() => setCategory(c)}
+                                className={cn(
+                                    'shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer',
+                                    category === c
+                                        ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                                        : 'bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white',
+                                )}
+                            >
+                                {c}
+                            </button>
+                        ))}
+                    </div>
+                )}
+
+                {filtered.length === 0 ? (
+                    <div className="py-20 text-center text-slate-500">Belum ada data sertifikasi.</div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {filtered.map((cert) => (
+                            <CertificateCard key={cert.id} cert={cert} onOpenImage={setPreview} />
+                        ))}
+                    </div>
+                )}
             </div>
 
-            <Navbar auth={null} profile={profile} />
-
-            <main className="flex-grow pt-28 pb-16 relative z-10">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    
-                    <div className="mb-10">
-                        <Link 
-                            href="/" 
-                            className="inline-flex items-center gap-2 text-xs font-semibold text-indigo-400 hover:text-indigo-300 mb-4 transition-colors group"
-                        >
-                            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                            <span>Kembali ke Beranda</span>
-                        </Link>
-                        <h1 className="text-3xl sm:text-4xl font-extrabold text-white">
-                            Daftar Sertifikasi &amp; Prestasi Akademik
-                        </h1>
-                        <p className="text-slate-400 text-sm mt-2 max-w-2xl">
-                            Seluruh lisensi, penghargaan, dan bukti kompetensi resmi yang dimiliki Rifky Permana dalam bidang Software Engineering dan IT.
-                        </p>
+            <Modal open={!!preview} onClose={() => setPreview(null)} title={preview?.title} size="xl">
+                {preview && (
+                    <div className="space-y-4">
+                        <img src={storageUrl(preview.image)} alt={preview.title} className="w-full h-auto rounded-xl border border-slate-800" />
+                        <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
+                            <span className="text-indigo-300 font-semibold">{preview.issuer}</span>
+                            {preview.credential_url && (
+                                <a
+                                    href={preview.credential_url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1"
+                                >
+                                    Verifikasi kredensial <ExternalLink className="w-4 h-4" />
+                                </a>
+                            )}
+                        </div>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {certificates.map((cert) => (
-                            <motion.div 
-                                whileHover={{ y: -4 }}
-                                key={cert.id} 
-                                className="glow-card p-6 rounded-2xl flex flex-col justify-between"
-                            >
-                                <div>
-                                    {cert.image && (
-                                        <div className="h-44 rounded-xl overflow-hidden mb-5 bg-slate-900 border border-slate-800">
-                                            <img 
-                                                src={`/storage/${cert.image}`} 
-                                                alt={cert.title} 
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                    )}
-
-                                    <div className="flex items-start justify-between gap-3 mb-3">
-                                        {cert.category && (
-                                            <span className="text-[11px] font-mono text-slate-400 px-2.5 py-0.5 bg-slate-900 rounded-md border border-slate-800">
-                                                {cert.category}
-                                            </span>
-                                        )}
-                                        <span className="text-slate-500 text-[11px] flex items-center gap-1">
-                                            <Calendar className="w-3.5 h-3.5" />
-                                            {cert.issue_date ? new Date(cert.issue_date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }) : ''}
-                                        </span>
-                                    </div>
-
-                                    <h3 className="text-base font-bold text-white mb-1">{cert.title}</h3>
-                                    <p className="text-xs font-semibold text-indigo-400 mb-3">{cert.issuer}</p>
-                                    
-                                    {cert.description && (
-                                        <p className="text-xs text-slate-400 leading-relaxed mb-4 line-clamp-3">
-                                            {cert.description}
-                                        </p>
-                                    )}
-                                </div>
-
-                                {cert.credential_url && (
-                                    <div className="pt-4 border-t border-slate-800/80">
-                                        <a 
-                                            href={cert.credential_url} 
-                                            target="_blank" 
-                                            rel="noreferrer" 
-                                            className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1 transition-colors"
-                                        >
-                                            <span>Lihat Credential Resmi</span>
-                                            <ExternalLink className="w-3.5 h-3.5" />
-                                        </a>
-                                    </div>
-                                )}
-                            </motion.div>
-                        ))}
-
-                        {certificates.length === 0 && (
-                            <div className="col-span-full py-20 text-center text-slate-500">
-                                Belum ada data sertifikasi.
-                            </div>
-                        )}
-                    </div>
-
-                </div>
-            </main>
-
-            <Footer profile={profile} />
-        </div>
+                )}
+            </Modal>
+        </PublicLayout>
     );
 }

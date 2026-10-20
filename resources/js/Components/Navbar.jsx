@@ -1,165 +1,189 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from '@inertiajs/react';
-import { 
-    Menu, 
-    X, 
-    LayoutDashboard, 
-    Send, 
-    FolderGit2, 
-    Award, 
-    Wrench, 
-    User,
-    Sparkles 
-} from 'lucide-react';
+import { Menu, X, LayoutDashboard, Send, FolderGit2, Award, Wrench, User, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { cn } from '@/Components/ui';
 
-export default function Navbar({ auth, profile }) {
-    const [scrolled, setScrolled] = useState(false);
-    const [mobileOpen, setMobileOpen] = useState(false);
+export const sections = [
+    { id: 'about', label: 'Tentang', icon: User },
+    { id: 'skills', label: 'Keahlian', icon: Wrench },
+    { id: 'projects', label: 'Proyek', icon: FolderGit2 },
+    { id: 'certificates', label: 'Sertifikasi', icon: Award },
+    { id: 'contact', label: 'Kontak', icon: Send },
+];
+
+// Highlights the section currently in view (home page only).
+function useActiveSection(enabled) {
+    const [active, setActive] = useState(null);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        if (!enabled) return;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => entry.isIntersecting && setActive(entry.target.id));
+            },
+            { rootMargin: '-45% 0px -50% 0px' },
+        );
+        sections.forEach(({ id }) => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+        return () => observer.disconnect();
+    }, [enabled]);
 
-    const navItems = [
-        { label: 'Tentang', href: '#about', icon: User },
-        { label: 'Keahlian', href: '#skills', icon: Wrench },
-        { label: 'Proyek', href: '#projects', icon: FolderGit2 },
-        { label: 'Sertifikasi', href: '#certificates', icon: Award },
-        { label: 'Kontak', href: '#contact', icon: Send },
-    ];
+    return active;
+}
 
-    // Format display name: if full_name has degree suffix like "Rifky Permana, S.Kom.", get just the name for logo
+function Logo({ profile }) {
+    const [imgFailed, setImgFailed] = useState(false);
     const displayName = profile?.full_name ? profile.full_name.split(',')[0].trim() : 'Rifky Permana';
-    const displayTagline = profile?.sub_title || 'S.Kom. • Web Dev';
+    const tagline = profile?.sub_title || 'S.Kom. • Web Dev';
 
     return (
-        <header 
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                scrolled 
-                    ? 'bg-[#090d16]/90 backdrop-blur-md py-3 shadow-lg shadow-black/30 border-b border-slate-800/80' 
-                    : 'bg-transparent py-5 border-b border-transparent'
-            }`}
+        <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center p-1.5 transition-all duration-300 group-hover:border-indigo-500/50">
+                {imgFailed ? (
+                    <Sparkles className="w-5 h-5 text-indigo-400" />
+                ) : (
+                    <img src="/images/logo.png" alt="" className="w-full h-full object-contain" onError={() => setImgFailed(true)} />
+                )}
+            </div>
+            <div className="flex flex-col leading-tight">
+                <span className="font-bold text-white text-[15px] tracking-tight group-hover:text-indigo-300 transition-colors">
+                    {displayName}
+                </span>
+                <span className="text-[11px] text-indigo-400/90 font-mono tracking-wide">{tagline}</span>
+            </div>
+        </Link>
+    );
+}
+
+export default function Navbar({ auth, profile, isHome = false }) {
+    const [scrolled, setScrolled] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
+    const active = useActiveSection(isHome);
+
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 20);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    useEffect(() => {
+        if (!mobileOpen) return;
+        const onKey = (e) => e.key === 'Escape' && setMobileOpen(false);
+        const onResize = () => window.innerWidth >= 768 && setMobileOpen(false);
+        document.addEventListener('keydown', onKey);
+        window.addEventListener('resize', onResize);
+        return () => {
+            document.removeEventListener('keydown', onKey);
+            window.removeEventListener('resize', onResize);
+        };
+    }, [mobileOpen]);
+
+    // On other pages the section links point back to the home page.
+    const hrefFor = (id) => (isHome ? `#${id}` : `/#${id}`);
+
+    return (
+        <header
+            className={cn(
+                'fixed top-0 inset-x-0 z-50 transition-all duration-300',
+                scrolled || mobileOpen
+                    ? 'bg-[#090d16]/90 backdrop-blur-md py-3 shadow-lg shadow-black/30 border-b border-slate-800/80'
+                    : 'bg-transparent py-4 border-b border-transparent',
+            )}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between">
-                    {/* Brand / Logo */}
-                    <a href="#" className="flex items-center gap-3 group">
-                        <div className="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-center p-1.5 transition-all duration-300 group-hover:border-indigo-500/50 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.25)]">
-                            <img 
-                                src="/images/logo.png" 
-                                alt="Rifky Permana Logo" 
-                                className="w-full h-full object-contain"
-                                onError={(e) => {
-                                    e.target.style.display = 'none';
-                                }}
-                            />
-                            <Sparkles className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform" />
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="font-bold text-white text-base tracking-tight group-hover:text-indigo-300 transition-colors">
-                                {displayName}
-                            </span>
-                            <span className="text-[11px] text-indigo-400/90 font-mono tracking-wider font-medium">
-                                {displayTagline}
-                            </span>
-                        </div>
-                    </a>
+                <div className="flex items-center justify-between gap-4">
+                    <Logo profile={profile} />
 
-                    {/* Desktop Menu */}
-                    <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 bg-slate-900/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-slate-800/80">
-                        {navItems.map((item) => (
+                    <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 backdrop-blur-md px-2 py-1.5 rounded-full border border-slate-800/80" aria-label="Navigasi utama">
+                        {sections.map((item) => (
                             <a
-                                key={item.label}
-                                href={item.href}
-                                className="px-3 py-1.5 text-xs lg:text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/70 rounded-full transition-all duration-200"
+                                key={item.id}
+                                href={hrefFor(item.id)}
+                                aria-current={active === item.id ? 'true' : undefined}
+                                className={cn(
+                                    'px-3.5 py-1.5 text-sm font-medium rounded-full transition-colors',
+                                    active === item.id
+                                        ? 'bg-indigo-600 text-white'
+                                        : 'text-slate-300 hover:text-white hover:bg-slate-800/70',
+                                )}
                             >
                                 {item.label}
                             </a>
                         ))}
                     </nav>
 
-                    {/* Actions */}
-                    <div className="hidden md:flex items-center gap-3">
+                    <div className="hidden md:flex items-center gap-2">
                         {auth?.user && (
-                            <a
+                            <Link
                                 href="/admin/dashboard"
-                                className="px-3.5 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 rounded-lg transition-colors flex items-center gap-1.5"
+                                className="px-3.5 py-2 text-sm font-semibold text-slate-200 bg-slate-800/90 hover:bg-slate-700 border border-slate-700/80 rounded-xl transition-colors flex items-center gap-1.5"
                             >
-                                <LayoutDashboard className="w-3.5 h-3.5 text-indigo-400" />
+                                <LayoutDashboard className="w-4 h-4 text-indigo-400" />
                                 Dashboard
-                            </a>
+                            </Link>
                         )}
                         <a
-                            href="#contact"
-                            className="relative group px-4 py-2 text-xs font-bold text-white rounded-lg overflow-hidden shadow-md shadow-indigo-600/20 transition-all duration-300 hover:shadow-indigo-600/40"
+                            href={hrefFor('contact')}
+                            className="px-4 py-2 text-sm font-bold text-white rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 shadow-md shadow-indigo-600/25 transition-all flex items-center gap-1.5"
                         >
-                            <span className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 transition-all duration-300 group-hover:opacity-90"></span>
-                            <span className="relative flex items-center gap-1.5">
-                                <Send className="w-3.5 h-3.5" />
-                                Hubungi Saya
-                            </span>
+                            <Send className="w-4 h-4" />
+                            Hubungi Saya
                         </a>
                     </div>
 
-                    {/* Mobile Hamburger Button */}
                     <button
                         onClick={() => setMobileOpen(!mobileOpen)}
-                        className="md:hidden text-slate-300 hover:text-white p-2 rounded-lg bg-slate-900/80 border border-slate-800 focus:outline-none"
-                        aria-label="Toggle Navigation"
+                        className="md:hidden text-slate-200 p-2 rounded-xl bg-slate-900/80 border border-slate-800 cursor-pointer"
+                        aria-label={mobileOpen ? 'Tutup menu' : 'Buka menu'}
+                        aria-expanded={mobileOpen}
                     >
-                        {mobileOpen ? <X className="w-5 h-5 text-indigo-400" /> : <Menu className="w-5 h-5" />}
+                        {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
 
-                {/* Mobile Dropdown Menu with Framer Motion */}
                 <AnimatePresence>
                     {mobileOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, height: 0, y: -10 }}
-                            animate={{ opacity: 1, height: 'auto', y: 0 }}
-                            exit={{ opacity: 0, height: 0, y: -10 }}
+                        <motion.nav
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="md:hidden mt-3 p-4 bg-slate-900/95 backdrop-blur-xl rounded-2xl border border-slate-800 shadow-2xl space-y-2 overflow-hidden"
+                            className="md:hidden overflow-hidden"
+                            aria-label="Navigasi seluler"
                         >
-                            {navItems.map((item) => {
-                                const Icon = item.icon;
-                                return (
-                                    <a
-                                        key={item.label}
-                                        href={item.href}
-                                        onClick={() => setMobileOpen(false)}
-                                        className="flex items-center gap-3 text-slate-300 hover:text-white font-medium py-2.5 px-3 rounded-xl hover:bg-slate-800/80 transition-colors"
-                                    >
-                                        <Icon className="w-4 h-4 text-indigo-400" />
-                                        <span className="text-sm">{item.label}</span>
-                                    </a>
-                                );
-                            })}
-                            <div className="pt-3 border-t border-slate-800 flex flex-col gap-2">
+                            <div className="pt-4 pb-2 space-y-1">
+                                {sections.map((item) => {
+                                    const Icon = item.icon;
+                                    return (
+                                        <a
+                                            key={item.id}
+                                            href={hrefFor(item.id)}
+                                            onClick={() => setMobileOpen(false)}
+                                            className={cn(
+                                                'flex items-center gap-3 py-3 px-3 rounded-xl text-base font-medium transition-colors',
+                                                active === item.id ? 'bg-indigo-600/15 text-white' : 'text-slate-300 hover:bg-slate-800/80',
+                                            )}
+                                        >
+                                            <Icon className="w-5 h-5 text-indigo-400" />
+                                            {item.label}
+                                        </a>
+                                    );
+                                })}
                                 {auth?.user && (
-                                    <a
+                                    <Link
                                         href="/admin/dashboard"
-                                        className="flex items-center justify-center gap-2 py-2.5 text-xs font-semibold text-slate-300 bg-slate-800 rounded-xl"
+                                        className="flex items-center gap-3 py-3 px-3 rounded-xl text-base font-medium text-slate-300 hover:bg-slate-800/80"
                                     >
-                                        <LayoutDashboard className="w-4 h-4 text-indigo-400" />
+                                        <LayoutDashboard className="w-5 h-5 text-indigo-400" />
                                         Dashboard Admin
-                                    </a>
+                                    </Link>
                                 )}
-                                <a
-                                    href="#contact"
-                                    onClick={() => setMobileOpen(false)}
-                                    className="flex items-center justify-center gap-2 py-2.5 text-xs font-bold text-white bg-indigo-600 rounded-xl shadow-lg shadow-indigo-600/30"
-                                >
-                                    <Send className="w-4 h-4" />
-                                    Hubungi Saya
-                                </a>
                             </div>
-                        </motion.div>
+                        </motion.nav>
                     )}
                 </AnimatePresence>
             </div>

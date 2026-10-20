@@ -7,6 +7,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
+use Inertia\Inertia;
 
 class ProfileController extends Controller
 {
@@ -14,7 +15,11 @@ class ProfileController extends Controller
     {
         $profile = Profile::first() ?? new Profile();
         $user = auth()->user();
-        return view('admin.profile', compact('profile', 'user'));
+
+        return Inertia::render('Admin/Profile', [
+            'profile' => $profile,
+            'account' => $user->only(['name', 'email']),
+        ]);
     }
 
     public function update(Request $request)
